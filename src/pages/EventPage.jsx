@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { eventsService, userService } from "../services/services";
 import { useParams } from "react-router-dom";
 import './EventPage.css';
+import { addParticipantsContext } from "../context/addParticipant.context";
 import imageBG from '/assets/img/house-bg.webp';
 import { formatDate } from '../utils/formatDate';
 import ParticipantCard from "../components/ParticipantCard";
 import Spinner from "../components/Spinner";
+import AddParticipantMenu from "../components/AddParticipantMenu";
+import getListToPaste from "../utils/getListToPaste";
 
 const EventPage = () => {
     const { eventId } = useParams();
     const [event, setEvent] = useState({});
     const [availableParticipants, setAvailableParticipants] = useState([]);
+    const [allParticipants, setAllParticipants] = useState([]); // [1,2,3,4,5,6,7,8,9,10
     const [participants, setParticipants] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { showParticipantsMenu } = useContext(addParticipantsContext);
+
 
     const getEvent = () => {
         setLoading(true);
@@ -27,7 +33,7 @@ const EventPage = () => {
 
         userService.getAll()
             .then((response) => {
-                setAvailableParticipants(response.data);
+                setAllParticipants(response.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -35,32 +41,43 @@ const EventPage = () => {
             });
     };
 
+    const generateAvailableParticipants = () => {
+        const availableParticipants = allParticipants.filter((participant) => !participants.some((p) => p._id === participant._id));
+        setAvailableParticipants(availableParticipants);
+    };
+
     useEffect(() => {
         getEvent();
     }, []);
 
     useEffect(() => {
-        const participantsIds = event.participants ? event.participants.map((participant) => participant._id) : [];
-        console.log(participantsIds, availableParticipants);
-        const filteredParticipants = availableParticipants.filter((participant) => !participantsIds.includes(participant._id));
+        generateAvailableParticipants();
+    }, [event, showParticipantsMenu]);
 
-        setAvailableParticipants(filteredParticipants);
-    }, [participants, event]);
-
-    const addParticipant = (userId) => {
-        eventsService.addParticipant(eventId, userId)
-            .then((response) => {
-                getEvent();
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+    const addParticipants = (userIdsArray) => {
+        const newParticipants = allParticipants.filter((participant) => userIdsArray.includes(participant._id));
+        setParticipants([...participants, ...newParticipants]);
+        generateAvailableParticipants([...participants, newParticipants]);
+        newParticipants.forEach((participant) => {
+            eventsService.addParticipant(eventId, participant._id)
+                .then((response) => {
+                    // getEvent();
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        });
     };
 
     const deleteParticipant = (userId) => {
+
+        const newParticipants = participants.filter((participant) => participant._id !== userId);
+        setParticipants(newParticipants);
+        generateAvailableParticipants(newParticipants);
+
         eventsService.deleteParticipant(eventId, userId)
             .then((response) => {
-                getEvent();
+                // getEvent();
             })
             .catch((error) => {
                 console.error(error);
@@ -76,43 +93,36 @@ const EventPage = () => {
                 !loading ?
                     <article className="event-container">
                         <div className="event-details">
-                            <p>📆 {formatDate(event.date)}</p>
+                            <p>📆{formatDate(event.date)}</p>
                             <p>🚩{event.location}</p>
-                            <p>✏️ {event.description}</p>
+                            <p>✏️{event.description}</p>
+                            <button onClick={()=>{getListToPaste( `${event.name} \n ${formatDate(event.date)}`,participants)}}>Enviar per Whatsapp</button>
                         </div>
 
                         <h2>Participants:</h2>
                         {
-                            event.participants?.length === 0 ?
-                                <p>🤷🏻‍♀️</p>
+                           participants?.length === 0 ?
+                                <p className="icon-no-idea">🤷🏻‍♀️</p>
                                 :
                                 <>
                                     <ol className="participants-list">
-                                        {event.participants && event.participants.map((participant) => (
+                                        {participants && participants.map((participant) => (
                                             <ParticipantCard participant={participant} deleteParticipant={deleteParticipant} key={participant._id} />
                                         ))}
                                     </ol>
 
                                 </>
                         }
-                        <h2>Add</h2>
-                        <ul>
-                            {availableParticipants.map((participant) => (
-                                <li className="li-participant" onClick={() => addParticipant(participant._id)} key={participant._id}>
-                                    <img className="avatar" src={participant.imageUrl} alt="" />
-                                    <p>
-                                        {participant.name}
-                                    </p>
+                        {
+                            showParticipantsMenu &&
+                            <AddParticipantMenu availableParticipants={availableParticipants} addParticipants={addParticipants} />
+                        }
 
-                                </li>
-                            ))}
-                        </ul>
                     </article>
                     :
                     <Spinner />
 
             }
-
         </section >
     );
 };
