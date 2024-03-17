@@ -1,20 +1,16 @@
 import './EventCard.css';
 import { Link } from 'react-router-dom';
+import { formatDate } from '../utils/formatDate';
 
 const EventCard = ({ event }) => {
 
-    const formatDate = (date) => {
-        const options = { year: "numeric", month: "numeric", day: "numeric" };
-        return new Date(date).toLocaleDateString(undefined, options);
-    };
-
-    return (
+      return (
         <li className="event-card-container">
             <Link to={`/events/${event._id}`}>
                 <h3>{event.name}</h3>
+                <p>📆{formatDate(event.date)}</p>
                 <p>{event.description}</p>
-                <p>{formatDate(event.date)}</p>
-                <p>Participants: {event.participants.length}</p>
+                <p>👨‍👩‍👧‍👦 {event.participants.length}</p>
             </Link>
 
         </li>
