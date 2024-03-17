@@ -1,8 +1,6 @@
 @font-face {
   font-family: 'Baby';
-  /* you can choose any name */
   src: url('/public/fonts/Baby\ Chubby.otf');
-  /* replace with your font file path and extension */
 }
 
 #root {
@@ -18,7 +16,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Baby;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 a {
@@ -35,12 +33,6 @@ li {
   height: 50px;
 }
 
-.li-participant {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
 .general-page-container {
   height: calc(100vh - 3.5rem);
   width: 100%;
@@ -50,4 +42,24 @@ li {
   justify-content: center;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
