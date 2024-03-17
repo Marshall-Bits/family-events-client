@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter as Router } from 'react-router-dom'
-import AddParticipantProvider from './context/AddParticipant.context.jsx'
+import { AddParticipantsProvider } from './context/addParticipant.context.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AddParticipantProvider>
+    <AddParticipantsProvider>
       <Router>
         <App />
       </Router>
-    </AddParticipantProvider>
+    </AddParticipantsProvider>
   </React.StrictMode>,
 )

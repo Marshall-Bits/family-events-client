@@ -1,15 +1,15 @@
 import { createContext, useState } from "react";
 
-const AddParticipantContext = createContext();
+const addParticipantsContext = createContext();
 
-const AddParticipantProvider = ({ children }) => {
-    const [showMenu, setShowMenu] = useState(false);
+const AddParticipantsProvider = ({ children }) => {
+    const [showParticipantsMenu, setShowParticipantsMenu] = useState(false);
 
     return (
-        <AddParticipantContext.Provider value={{ showMenu, setShowMenu }}>
+        <addParticipantsContext.Provider value={{ showParticipantsMenu, setShowParticipantsMenu }}>
             {children}
-        </AddParticipantContext.Provider>
+        </addParticipantsContext.Provider>
     );
 };
 
-export default AddParticipantProvider;
+export { AddParticipantsProvider, addParticipantsContext };
