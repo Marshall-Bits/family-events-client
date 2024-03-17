@@ -4,7 +4,8 @@ class EventsService {
     constructor() {
         this.API_URL = import.meta.env.VITE_API_URL;
         this.api = axios.create({
-            baseURL: this.API_URL
+            baseURL: this.API_URL,
+            withCredentials: false
         });
     }
 
