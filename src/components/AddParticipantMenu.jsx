@@ -26,7 +26,6 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
 
     return (
         <div className={`add-participant-container ${isFadingOut ? "fade-out-menu" : "fade-in-menu"}`}>
-            <h2>Add</h2>
             <ul>
                 {availableParticipants.map((participant) => (
                     <li className="li-participant" key={participant._id}>
@@ -38,7 +37,7 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
                     </li>
                 ))}
             </ul>
-            <button onClick={() => handleFadeOut()}>close</button>
+            <button onClick={() => handleFadeOut()}>Afegir i tancar</button>
         </div>
     );
 };

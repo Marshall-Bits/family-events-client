@@ -3,6 +3,7 @@ import { eventsService } from "../services/services";
 import "./HomePage.css";
 import EventCard from "../components/EventCard";
 import Spinner from "../components/Spinner";
+import logo from "/assets/img/house-bg2.webp";
 
 
 const HomePage = () => {
@@ -20,6 +21,9 @@ const HomePage = () => {
 
     return (
         <section className="general-page-container">
+            <img src={logo} className="header-logo" />
+            <h1 className="event-title">Següents events</h1>
+
             {
                 events.length !== 0 ?
                     <ul className="events-list-container">
