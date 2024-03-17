@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { AddParticipantsProvider } from './context/addParticipant.context.jsx'
+import { AddParticipantsProvider } from './context/addParticipant.context'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -12,5 +12,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
       </Router>
     </AddParticipantsProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
