@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import './Navbar.css';
 import { Link, useLocation } from 'react-router-dom';
-import { addParticipantsContext } from '../context/addParticipant.context';
+import { addParticipantsContext } from '../context/participant.context';
 
 const Navbar = () => {
     const [isEventPage, setIsEventPage] = useState(false);

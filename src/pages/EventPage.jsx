@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { eventsService, userService } from "../services/services";
 import { useParams } from "react-router-dom";
 import './EventPage.css';
-import { addParticipantsContext } from "../context/addParticipant.context";
+import { addParticipantsContext } from "../context/participant.context";
 import imageBG from '/assets/img/house-bg.webp';
 import { formatDate } from '../utils/formatDate';
 import ParticipantCard from "../components/ParticipantCard";

@@ -1,6 +1,6 @@
 import './AddParticipantMenu.css';
 import { useContext, useState } from 'react';
-import { addParticipantsContext } from '../context/addParticipant.context';
+import { addParticipantsContext } from '../context/participant.context';
 
 const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
     const { setShowParticipantsMenu } = useContext(addParticipantsContext);
