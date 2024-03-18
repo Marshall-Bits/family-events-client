@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import './NewEventPage.css';
 import { eventsService } from "../services/services";
+import { popupContext } from "../context/popup.context";
 
 const NewEventPage = () => {
+    const { setPopupMessage, setShowPopup } = useContext(popupContext);
+
+
     const [formData, setFormData] = useState({
         name: "",
         date: "",
@@ -21,10 +25,12 @@ const NewEventPage = () => {
         event.preventDefault();
         eventsService.create(formData)
             .then((response) => {
-                console.log(response);
+                setPopupMessage(`El teu event: ${response.data.name} ha estat creat!`);
+                setShowPopup(true);
             })
             .catch((error) => {
-                console.log(error);
+                setPopupMessage(`Hi ha hagut un error 😓, intenta-ho més tard.`);
+                setShowPopup(true);
             });
     };
 
@@ -61,6 +67,7 @@ const NewEventPage = () => {
                 <label htmlFor="location" >Location</label>
                 <input
                     required
+                    maxLength={15}
                     type="text"
                     name="location"
                     value={formData.location}
