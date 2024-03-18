@@ -15,7 +15,7 @@
 .add-participant-container ul {
     display: flex;
     flex-direction: column;
-    
+
     position: absolute;
     top: 6%;
     width: 80%;
@@ -44,7 +44,7 @@ input[type="checkbox"] {
     padding: 1rem;
 }
 
-.add-and-close-btn{
+.close-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,4 +54,13 @@ input[type="checkbox"] {
     border-radius: 50%;
     bottom: 3vh;
     right: 3vh;
+    transition: all 0.3s ease-in-out;
+    border-right: #226126 3px solid;
+}
+
+.cancel {
+    transform: rotateZ(45deg);
+    background-color: #fdb7b7;
+    border-bottom: #773030 0px solid;
+    border-right: #773030 3px solid;
 }
