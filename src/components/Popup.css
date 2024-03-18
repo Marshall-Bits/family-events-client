@@ -1,0 +1,57 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.popup-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 90vw;
+    height: 30vh;
+    border-bottom: #e7c5c5 5px solid;
+    border-right: #f1dfdf 5px solid;
+    text-align: center;
+    animation: fromLeft 0.5s ease forwards;
+}
+
+.disappearing {
+    animation: toRight 0.5s ease forwards;
+}
+
+.fading-out {
+    animation: fadeOut 0.7s ease forwards;
+}
+
+@keyframes fromLeft {
+    from {
+        transform: translateX(-100vw); 
+    }
+    to {
+        transform: translateX(0); 
+    }
+}
+
+@keyframes toRight {
+    from {
+        transform: translateX(0); 
+    }
+    to {
+        transform: translateX(100vw); 
+    }
+}
