@@ -37,9 +37,9 @@ const NewEventPage = () => {
 
     return (
         <div>
-            <h1>New Event</h1>
+            <h1>Nou Event</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name" >Name</label>
+                <label htmlFor="name" >Nom</label>
                 <input
                     required
                     maxLength={15}
@@ -48,7 +48,7 @@ const NewEventPage = () => {
                     value={formData.name}
                     onChange={handleChange}
                 />
-                <label htmlFor="date" >Date</label>
+                <label htmlFor="date" >Data</label>
                 <input
                     required
                     type="date"
@@ -56,7 +56,7 @@ const NewEventPage = () => {
                     value={formData.date}
                     onChange={handleChange}
                 />
-                <label htmlFor="description" >Description</label>
+                <label htmlFor="description" >Descripció</label>
                 <textarea
                     required
                     maxLength={30}
@@ -64,7 +64,7 @@ const NewEventPage = () => {
                     value={formData.description}
                     onChange={handleChange}
                 />
-                <label htmlFor="location" >Location</label>
+                <label htmlFor="location" >Localitat</label>
                 <input
                     required
                     maxLength={15}
