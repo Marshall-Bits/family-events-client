@@ -10,6 +10,7 @@
     border-right: #f1dfdf 5px solid;
     box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
     background-color: #fff;
+    font-size: 1.7rem;
 }
 
 @keyframes moveToLeft {
