@@ -37,7 +37,7 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
                     </li>
                 ))}
             </ul>
-            <button onClick={() => handleFadeOut()}>Afegir i tancar</button>
+            <button className='add-and-close-btn' onClick={() => handleFadeOut()}>➕</button>
         </div>
     );
 };
