@@ -96,12 +96,12 @@ const EventPage = () => {
                             <p>📆{formatDate(event.date)}</p>
                             <p>🚩{event.location}</p>
                             <p>✏️{event.description}</p>
-                            <button onClick={()=>{getListToPaste( `${event.name} \n ${formatDate(event.date)}`,participants)}}>Enviar per Whatsapp</button>
+                            <button onClick={() => { getListToPaste(event.name, formatDate(event.date), participants) }}>Enviar per Whatsapp</button>
                         </div>
 
                         <h2>Participants:</h2>
                         {
-                           participants?.length === 0 ?
+                            participants?.length === 0 ?
                                 <p className="icon-no-idea">🤷🏻‍♀️</p>
                                 :
                                 <>
