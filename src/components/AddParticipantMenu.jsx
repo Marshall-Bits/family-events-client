@@ -9,7 +9,7 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
 
     const handleFadeOut = () => {
         setIsFadingOut(true);
-        addParticipants(participantsToAdd)
+        participantsToAdd.length > 0 && addParticipants(participantsToAdd)
         setTimeout(() => {
             setShowParticipantsMenu(false);
         }, 300);
@@ -37,7 +37,12 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
                     </li>
                 ))}
             </ul>
-            <button className='add-and-close-btn' onClick={() => handleFadeOut()}>➕</button>
+            {
+                participantsToAdd.length === 0 ?
+                    <button  className='close-btn cancel' onClick={() => handleFadeOut()}>➕</button>
+                    :
+                    <button className='close-btn' onClick={() => handleFadeOut()}>➕</button>
+            }
         </div>
     );
 };
