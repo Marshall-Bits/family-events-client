@@ -3,6 +3,9 @@ const getListToPaste = (title, date, arrayOfParticipants) => {
     arrayOfParticipants.forEach((participant, index) => {
         listToPaste += `${index + 1}. ${participant.name} \n`;
     });
+
+    listToPaste += `Més informació: ${window.location.href}`;
+
     let whatsappUrl = `https://wa.me/?text=${encodeURIComponent(listToPaste)}`;
     window.open(whatsappUrl);
 };
