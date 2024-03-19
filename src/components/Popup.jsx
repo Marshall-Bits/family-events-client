@@ -14,6 +14,7 @@ const Popup = () => {
         const eventId = location.pathname.split('/').pop();
         eventsService.delete(eventId)
             .then(() => {
+                setIsDeletePopup(false);
                 setShowPopup(true);
                 setPopupMessage("Quedada eliminada!")
             })
@@ -34,6 +35,7 @@ const Popup = () => {
     };
 
     const handleCancel = () => {
+        setIsDeletePopup(false);
         setDisappear(true);
         setTimeout(() => {
             setShowPopup(false);
@@ -45,8 +47,8 @@ const Popup = () => {
         <section className={`overlay ${disappear && "fading-out"}`}>
             <div className={`popup-container ${disappear && "disappearing"}`}>
                 <p>{popupMessage}</p>
-                {isDeletePopup && <button onClick={() => handleCancel()} className='cancel-btn'>👎</button>}
-                <button onClick={() => handleAccept()} className='ok'>👍</button>
+                <button className="yes-btn" onClick={() => handleAccept()} >Vale</button>
+                {isDeletePopup && <button onClick={() => handleCancel()} className='no-btn'>No pas</button>}
             </div>
         </section>
     );

@@ -42,3 +42,9 @@ button {
     border-bottom: #226126 3px solid;
     border-right: #1c8f3f 3px solid;
 }
+
+h1{
+    color: #ff8482;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}

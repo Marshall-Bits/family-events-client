@@ -21,7 +21,7 @@ function App() {
         <Route path="/new-event" element={<EventFormPage />} />
         <Route path="/events/edit/:eventId" element={<EventFormPage />} />
         <Route path="/events/:eventId" element={<EventPage />} />
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<h1>Not Found 🙅🏻</h1>} />
       </Routes>
     </>
   )

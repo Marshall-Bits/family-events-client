@@ -38,8 +38,21 @@
     animation: fadeOut 0.7s ease forwards;
 }
 
-.cancel-btn{
-    background-color: red;
+.yes-btn{
+    width: 6rem;
+    background-color: #b2dafa;
+    border-bottom: #223661 3px solid;
+    border-right: #1c4e8f 3px solid;
+    color:black;
+}
+
+.no-btn{
+    width: 6rem;
+    background-color: #124f81;
+    border-bottom: #0c1527 3px solid;
+    border-right: #0b213f 3px solid;
+    color:#fff;
+    
 }
 
 @keyframes fromLeft {

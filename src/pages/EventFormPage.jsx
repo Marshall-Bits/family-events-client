@@ -68,7 +68,7 @@ const EventFormPage = () => {
 
     return (
         <div>
-            <h1>{isUpdateForm ? "Editar event" : "Nou event"}</h1>
+            <h1>{isUpdateForm ? "Editar quedada" : "Nova quedada"}</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name" >Nom</label>
                 <input
