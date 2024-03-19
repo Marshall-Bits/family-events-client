@@ -102,7 +102,11 @@ const EventPage = () => {
                         <h2>Participants:</h2>
                         {
                             participants?.length === 0 ?
-                                <p className="icon-no-idea">🤷🏻‍♀️</p>
+                                <>
+                                    <p className="icon-no-idea">🤷🏻‍♀️</p>
+                                    <p>Afegeix participants</p>
+                                    <p className="finger">👇</p>
+                                </>
                                 :
                                 <>
                                     <ol className="participants-list">

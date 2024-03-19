@@ -1,6 +1,5 @@
 body {
     align-items: center;
-    /*  gradient vertical */
     background-image:linear-gradient(to bottom, #69f3f8, #5debf0, #4fe4ea, #1b7fb8); 
     display: flex;
     flex-direction: column;
