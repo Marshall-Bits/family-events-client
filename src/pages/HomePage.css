@@ -25,6 +25,8 @@
 }
 
 .finger{
+  position: fixed;
+  bottom: 8vh;
   animation: upAndDown 1s infinite;
 }
 
@@ -48,12 +50,12 @@
 
 @keyframes upAndDown {
   0% {
-    transform: translateY(0);
+    transform: translateY(-2rem);
   }
   50% {
-    transform: translateY(3rem);
+    transform: translateY(0);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(-2rem);
   }
 }

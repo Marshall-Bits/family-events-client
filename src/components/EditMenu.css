@@ -6,19 +6,21 @@
     gap: 1rem;
     background-color: #fff;
     width: 100%;
-    padding: 3rem 0;
-    position:absolute;
+    padding-bottom: 10vh;
+    padding-top: 2rem;
+    position: absolute;
     bottom: 0;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    animation: slideIn 0.7s ease-in-out;
+    animation: slideIn 0.3s ease-in-out;
 }
 
 .sliding-out {
     animation: slideOut 0.7s ease-in-out;
 }
 
-.buttons-section button, .buttons-section a{
+.buttons-section button,
+.buttons-section a {
     display: flex;
     width: 100%;
     border: none;
@@ -40,17 +42,20 @@
     from {
         transform: translateY(100%);
     }
+
     to {
         transform: translateY(0);
     }
 }
+
+
 
 @keyframes slideOut {
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(100%);
     }
 }
-

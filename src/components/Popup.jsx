@@ -15,7 +15,7 @@ const Popup = () => {
         eventsService.delete(eventId)
             .then(() => {
                 setShowPopup(true);
-                setPopupMessage("L'event s'ha eliminat")
+                setPopupMessage("Quedada eliminada!")
             })
             .catch(() => {
                 setShowPopup(true);

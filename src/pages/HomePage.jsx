@@ -24,7 +24,7 @@ const HomePage = () => {
         <section className="general-page-container">
             <img src={logo} className="header-logo" />
 
-            <h1 className="event-title">Següents events</h1>
+            <h1 className="event-title">Següents quedades</h1>
             {
                 events ?
                     events.length !== 0 ?
@@ -35,9 +35,9 @@ const HomePage = () => {
                         </ul>
                         :
                         <div className="no-events-container">
-                            <p>No hi ha cap event programat 😓</p>
+                            <p>No hi ha cap quedada programada 😓</p>
                             <img className="sad-fork" src={sadFork} alt="A sad fork sitting on a chair in front of a table" />
-                            <p>Afegeix un event nou!</p>
+                            <p>Afegeix una nova quedada!</p>
                             <p className="finger">👇</p>
                         </div>
                     :

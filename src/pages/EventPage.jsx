@@ -18,7 +18,7 @@ const EventPage = () => {
     const [participants, setParticipants] = useState([]);
     const [loading, setLoading] = useState(true);
     const { showParticipantsMenu } = useContext(addParticipantsContext);
-    const [showEditMenu, setShowEditMenu] = useState(true);
+    const [showEditMenu, setShowEditMenu] = useState(false);
 
 
     const getEvent = () => {
@@ -88,6 +88,11 @@ const EventPage = () => {
                 !loading ?
                     <article className="event-container">
                         <div className="event-details">
+                            <div onClick={()=>setShowEditMenu(true)} id="menu-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <p>📆{formatDate(event.date)}</p>
                             <p>🚩{event.location}</p>
                             <p>✏️{event.description}</p>
