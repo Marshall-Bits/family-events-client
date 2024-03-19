@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { eventsService, userService } from "../services/services";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import './EventPage.css';
 import { addParticipantsContext } from "../context/participant.context";
 import imageBG from '/assets/img/house-bg.webp';
@@ -96,6 +96,7 @@ const EventPage = () => {
                             <p>📆{formatDate(event.date)}</p>
                             <p>🚩{event.location}</p>
                             <p>✏️{event.description}</p>
+                            <Link to={`/events/edit/${event._id}`}>Editar</Link>
                             <button onClick={() => { getListToPaste(event.name, formatDate(event.date), participants) }}>Enviar per Whatsapp</button>
                         </div>
 

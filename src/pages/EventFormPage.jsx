@@ -1,11 +1,13 @@
-import { useState, useContext } from "react";
-import './NewEventPage.css';
+import { useState, useContext, useEffect } from "react";
+import './EventFormPage.css';
 import { eventsService } from "../services/services";
 import { popupContext } from "../context/popup.context";
+import { useParams } from "react-router-dom";
+import { formatYYYMMDD } from "../utils/formatDate";
 
-const NewEventPage = () => {
+const EventFormPage = () => {
     const { setPopupMessage, setShowPopup } = useContext(popupContext);
-
+    const { eventId } = useParams();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -13,6 +15,23 @@ const NewEventPage = () => {
         description: "",
         location: ""
     });
+
+    const [isUpdateForm, setIsUpdateForm] = useState(false);
+
+    useEffect(() => {
+        if (eventId) {
+            setIsUpdateForm(true);
+            eventsService.getOne(eventId)
+                .then((response) => {
+                    setFormData(response.data);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    }, [eventId]);
+
+
 
     const handleChange = (event) => {
         setFormData({
@@ -23,21 +42,33 @@ const NewEventPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        eventsService.create(formData)
-            .then((response) => {
-                setPopupMessage(`El teu event: ${response.data.name} ha estat creat!`);
-                setShowPopup(true);
-            })
-            .catch((error) => {
-                setPopupMessage(`Hi ha hagut un error 😓, intenta-ho més tard.`);
-                setShowPopup(true);
-            });
+        if (!isUpdateForm) {
+            eventsService.create(formData)
+                .then((response) => {
+                    setPopupMessage(`El teu event: ${response.data.name} ha estat creat!`);
+                    setShowPopup(true);
+                })
+                .catch((error) => {
+                    setPopupMessage(`Hi ha hagut un error 😓, intenta-ho més tard.`);
+                    setShowPopup(true);
+                });
+        } else {
+            eventsService.update(eventId, formData)
+                .then((response) => {
+                    setPopupMessage(`El teu event: ${response.data.name} ha estat actualitzat!`);
+                    setShowPopup(true);
+                })
+                .catch((error) => {
+                    setPopupMessage(`Hi ha hagut un error 😓, intenta-ho més tard.`);
+                    setShowPopup(true);
+                });
+        }
     };
 
 
     return (
         <div>
-            <h1>Nou Event</h1>
+            <h1>{isUpdateForm ? "Editar event" : "Nou event"}</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name" >Nom</label>
                 <input
@@ -53,7 +84,7 @@ const NewEventPage = () => {
                     required
                     type="date"
                     name="date"
-                    value={formData.date}
+                    value={formData.date && formatYYYMMDD(formData.date)}
                     onChange={handleChange}
                 />
                 <label htmlFor="description" >Descripció</label>
@@ -73,10 +104,10 @@ const NewEventPage = () => {
                     value={formData.location}
                     onChange={handleChange}
                 />
-                <button type="submit">Create</button>
+                <button type="submit">{isUpdateForm ? "Editar" : "Crear"}</button>
             </form>
         </div>
     );
 };
 
-export default NewEventPage;
+export default EventFormPage;

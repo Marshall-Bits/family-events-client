@@ -17,6 +17,10 @@ class EventsService {
         return this.api.get(`/events/${id}`);
     }
 
+    update(id, event) {
+        return this.api.put(`/events/${id}`, event);
+    }
+
     addParticipant(eventId, userId) {
         return this.api.post(`/events/${eventId}/participants`, { userId });
     }
