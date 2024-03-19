@@ -1,16 +1,17 @@
 import './Popup.css';
 import { useContext, useState } from 'react';
 import { popupContext } from '../context/popup.context';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { eventsService } from '../services/services';
 
 const Popup = () => {
     const { setShowPopup, popupMessage, setPopupMessage, setIsDeletePopup, isDeletePopup } = useContext(popupContext);
     const [disappear, setDisappear] = useState(false);
     const navigate = useNavigate();
-    const { eventId } = useParams();
+    const location = useLocation();
 
     const deleteEvent = () => {
+        const eventId = location.pathname.split('/').pop();
         eventsService.delete(eventId)
             .then((response) => {
                 setShowPopup(true);
@@ -23,12 +24,12 @@ const Popup = () => {
     };
 
     const handleAccept = () => {
-        navigate('/');
+        !isDeletePopup && navigate('/');
         setDisappear(true);
-        isDeletePopup && deleteEvent();
         setTimeout(() => {
             setShowPopup(false);
             setIsDeletePopup(false);
+            isDeletePopup && deleteEvent();
         }, 700);
     };
 
