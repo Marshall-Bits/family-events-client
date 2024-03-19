@@ -9,15 +9,17 @@ import ParticipantCard from "../components/ParticipantCard";
 import Spinner from "../components/Spinner";
 import AddParticipantMenu from "../components/AddParticipantMenu";
 import getListToPaste from "../utils/getListToPaste";
+import { popupContext } from "../context/popup.context";
 
 const EventPage = () => {
     const { eventId } = useParams();
     const [event, setEvent] = useState({});
     const [availableParticipants, setAvailableParticipants] = useState([]);
-    const [allParticipants, setAllParticipants] = useState([]); // [1,2,3,4,5,6,7,8,9,10
+    const [allParticipants, setAllParticipants] = useState([]);
     const [participants, setParticipants] = useState([]);
     const [loading, setLoading] = useState(true);
     const { showParticipantsMenu } = useContext(addParticipantsContext);
+    const { setShowPopup, setPopupMessage, setIsDeletePopup } = useContext(popupContext);
 
 
     const getEvent = () => {
@@ -84,6 +86,14 @@ const EventPage = () => {
             });
     };
 
+   
+
+    const displayDeletePopup = () => {
+        setShowPopup(true);
+        setPopupMessage('Estàs segur que vols eliminar aquest event?');
+        setIsDeletePopup(true);
+    };
+
 
     return (
         <section className="general-page-container">
@@ -97,6 +107,7 @@ const EventPage = () => {
                             <p>🚩{event.location}</p>
                             <p>✏️{event.description}</p>
                             <Link to={`/events/edit/${event._id}`}>Editar</Link>
+                            <button onClick={() => displayDeletePopup()}>🗑️</button>
                             <button onClick={() => { getListToPaste(event.name, formatDate(event.date), participants) }}>Enviar per Whatsapp</button>
                         </div>
 

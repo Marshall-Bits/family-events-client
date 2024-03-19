@@ -38,6 +38,10 @@
     animation: fadeOut 0.7s ease forwards;
 }
 
+.cancel-btn{
+    background-color: red;
+}
+
 @keyframes fromLeft {
     from {
         transform: translateX(-100vw); 
