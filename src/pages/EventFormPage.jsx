@@ -45,7 +45,7 @@ const EventFormPage = () => {
         if (!isUpdateForm) {
             eventsService.create(formData)
                 .then((response) => {
-                    setPopupMessage(`El teu event: ${response.data.name} ha estat creat!`);
+                    setPopupMessage(`${response.data.name} creat!`);
                     setShowPopup(true);
                 })
                 .catch((error) => {
@@ -55,7 +55,7 @@ const EventFormPage = () => {
         } else {
             eventsService.update(eventId, formData)
                 .then((response) => {
-                    setPopupMessage(`El teu event: ${response.data.name} ha estat actualitzat!`);
+                    setPopupMessage(`${response.data.name} ha estat actualitzat!`);
                     setShowPopup(true);
                 })
                 .catch((error) => {

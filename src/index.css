@@ -17,6 +17,7 @@
   box-sizing: border-box;
   font-family: Baby;
   letter-spacing: 1px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
