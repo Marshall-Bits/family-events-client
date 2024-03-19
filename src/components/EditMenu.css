@@ -1,0 +1,56 @@
+.buttons-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #fff;
+    width: 100%;
+    padding: 3rem 0;
+    position:absolute;
+    bottom: 0;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    animation: slideIn 0.7s ease-in-out;
+}
+
+.sliding-out {
+    animation: slideOut 0.7s ease-in-out;
+}
+
+.buttons-section button, .buttons-section a{
+    display: flex;
+    width: 100%;
+    border: none;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.close-edit-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+

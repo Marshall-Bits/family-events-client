@@ -44,6 +44,14 @@ li {
   overflow-x: hidden;
 }
 
+.fade-in-menu {
+  animation: fadeIn 300ms ease-in-out forwards;
+}
+
+.fade-out-menu {
+  animation: fadeOut 300ms ease-in-out forwards;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

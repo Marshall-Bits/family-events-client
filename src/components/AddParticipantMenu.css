@@ -22,13 +22,7 @@
     /* height: 100%; */
 }
 
-.fade-in-menu {
-    animation: fadeIn 300ms ease-in-out forwards;
-}
 
-.fade-out-menu {
-    animation: fadeOut 300ms ease-in-out forwards;
-}
 
 input[type="checkbox"] {
     width: 30px;

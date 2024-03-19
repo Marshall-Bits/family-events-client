@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { eventsService, userService } from "../services/services";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import './EventPage.css';
 import { addParticipantsContext } from "../context/participant.context";
 import imageBG from '/assets/img/house-bg.webp';
@@ -8,8 +8,7 @@ import { formatDate } from '../utils/formatDate';
 import ParticipantCard from "../components/ParticipantCard";
 import Spinner from "../components/Spinner";
 import AddParticipantMenu from "../components/AddParticipantMenu";
-import getListToPaste from "../utils/getListToPaste";
-import { popupContext } from "../context/popup.context";
+import EditMenu from "../components/EditMenu";
 
 const EventPage = () => {
     const { eventId } = useParams();
@@ -19,7 +18,7 @@ const EventPage = () => {
     const [participants, setParticipants] = useState([]);
     const [loading, setLoading] = useState(true);
     const { showParticipantsMenu } = useContext(addParticipantsContext);
-    const { setShowPopup, setPopupMessage, setIsDeletePopup } = useContext(popupContext);
+    const [showEditMenu, setShowEditMenu] = useState(true);
 
 
     const getEvent = () => {
@@ -62,9 +61,6 @@ const EventPage = () => {
         generateAvailableParticipants([...participants, newParticipants]);
         newParticipants.forEach((participant) => {
             eventsService.addParticipant(eventId, participant._id)
-                .then((response) => {
-                    // getEvent();
-                })
                 .catch((error) => {
                     console.error(error);
                 });
@@ -78,25 +74,14 @@ const EventPage = () => {
         generateAvailableParticipants(newParticipants);
 
         eventsService.deleteParticipant(eventId, userId)
-            .then((response) => {
-                // getEvent();
-            })
             .catch((error) => {
                 console.error(error);
             });
     };
 
-   
-
-    const displayDeletePopup = () => {
-        setShowPopup(true);
-        setPopupMessage('Estàs segur que vols eliminar aquest event?');
-        setIsDeletePopup(true);
-    };
-
-
     return (
         <section className="general-page-container">
+            {showEditMenu && <EditMenu setShowEditMenu={setShowEditMenu} event={event} participants={participants} />}
             <img className="header-img" src={imageBG} alt="background image of a house in the mountain" />
             <h1 className="event-title">{event.name}</h1>
             {
@@ -106,9 +91,6 @@ const EventPage = () => {
                             <p>📆{formatDate(event.date)}</p>
                             <p>🚩{event.location}</p>
                             <p>✏️{event.description}</p>
-                            <Link to={`/events/edit/${event._id}`}>Editar</Link>
-                            <button onClick={() => displayDeletePopup()}>🗑️</button>
-                            <button onClick={() => { getListToPaste(event.name, formatDate(event.date), participants) }}>Enviar per Whatsapp</button>
                         </div>
 
                         <h2>Participants:</h2>

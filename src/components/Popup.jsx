@@ -13,11 +13,11 @@ const Popup = () => {
     const deleteEvent = () => {
         const eventId = location.pathname.split('/').pop();
         eventsService.delete(eventId)
-            .then((response) => {
+            .then(() => {
                 setShowPopup(true);
                 setPopupMessage("L'event s'ha eliminat")
             })
-            .catch((error) => {
+            .catch(() => {
                 setShowPopup(true);
                 setPopupMessage("Hi ha hagut un error, intenta-ho més tard")
             });
