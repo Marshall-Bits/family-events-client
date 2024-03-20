@@ -29,7 +29,7 @@ const Navbar = () => {
                 }
 
                 <li>
-                    <Link to="/members">👨‍👩‍👧‍👦</Link>
+                    <Link to="/users">👨‍👩‍👧‍👦</Link>
                 </li>
             </menu>
         </nav>

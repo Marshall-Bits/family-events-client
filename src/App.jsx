@@ -7,6 +7,7 @@ import EventPage from './pages/EventPage'
 import Popup from './components/Popup'
 import { useContext } from 'react'
 import { popupContext } from './context/popup.context'
+import UsersPage from './pages/UsersPage';
 
 function App() {
   const { showPopup } = useContext(popupContext);
@@ -21,6 +22,7 @@ function App() {
         <Route path="/new-event" element={<EventFormPage />} />
         <Route path="/events/edit/:eventId" element={<EventFormPage />} />
         <Route path="/events/:eventId" element={<EventPage />} />
+        <Route path="/users" element={<UsersPage />} />
         <Route path="*" element={<h1>Not Found 🙅🏻</h1>} />
       </Routes>
     </>
