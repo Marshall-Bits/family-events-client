@@ -39,7 +39,7 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
             </ul>
             {
                 participantsToAdd.length === 0 ?
-                    <button  className='close-btn cancel' onClick={() => handleFadeOut()}>➕</button>
+                    <button className='close-btn cancel' onClick={() => handleFadeOut()}>➕</button>
                     :
                     <button className='close-btn' onClick={() => handleFadeOut()}>➕</button>
             }

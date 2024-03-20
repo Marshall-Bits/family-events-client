@@ -40,7 +40,7 @@
 
 .yes-btn{
     width: 6rem;
-    background-color: #b2dafa;
+    background-color: #69f3f8;
     border-bottom: #223661 3px solid;
     border-right: #1c4e8f 3px solid;
     color:black;
@@ -48,7 +48,7 @@
 
 .no-btn{
     width: 6rem;
-    background-color: #124f81;
+    background-color: #1b7fb8;
     border-bottom: #0c1527 3px solid;
     border-right: #0b213f 3px solid;
     color:#fff;

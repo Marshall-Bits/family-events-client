@@ -38,6 +38,10 @@
     cursor: pointer;
 }
 
+.label-name{
+    width: 80%;
+}
+
 @keyframes slideIn {
     from {
         transform: translateY(100%);

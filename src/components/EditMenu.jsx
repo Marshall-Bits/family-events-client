@@ -21,7 +21,7 @@ const EditMenu = ({ event, participants, setShowEditMenu }) => {
         setTimeout(() => {
             setShowEditMenu(false);
             setShowPopup(true);
-            setPopupMessage('Estàs segur que vols eliminar aquest event?');
+            setPopupMessage('Segur que vols eliminar aquesta quedada?');
             setIsDeletePopup(true);
         }, 700);
     };
