@@ -1,6 +1,6 @@
 body {
     align-items: center;
-    background-image:linear-gradient(to bottom, #69f3f8, #5debf0, #4fe4ea, #1b7fb8); 
+    background-image: linear-gradient(to bottom, #69f3f8, #5debf0, #4fe4ea, #1b7fb8);
     display: flex;
     flex-direction: column;
     font-size: 23px;
@@ -43,8 +43,26 @@ button {
     border-right: #1c8f3f 3px solid;
 }
 
-h1{
+h1 {
     color: #ff8482;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
+}
+
+.loading-container {
+    animation: background 2s infinite;
+}
+
+@keyframes background {
+    0% {
+        background-color: #3eb8ff;
+    }
+
+    50% {
+        background-color: #d6d6d6;
+    }
+
+    100% {
+        background-color: #3eb8ff;
+    }
 }

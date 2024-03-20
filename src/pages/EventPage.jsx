@@ -96,6 +96,7 @@ const EventPage = () => {
                             <p>📆{formatDate(event.date)}</p>
                             <p>🚩{event.location}</p>
                             <p>✏️{event.description}</p>
+                            <p>👨‍👩‍👧‍👦 {participants.length} assistents</p>
                         </div>
 
                         <h2>Participants:</h2>

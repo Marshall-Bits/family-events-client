@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { userService } from "../services/services";
+import './UsersPage.css';
 
 
 import ProfileCard from "../components/ProfileCard";

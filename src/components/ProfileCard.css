@@ -18,11 +18,3 @@
     border-right: #f1dfdf 5px solid;
 }
 
-.users {
-    width: 100vw;
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 8vh;
-}

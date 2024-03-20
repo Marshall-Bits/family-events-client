@@ -1,0 +1,9 @@
+.users {
+    width: 100vw;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 10vh;
+    height: calc(100vh - 8vh);
+}
