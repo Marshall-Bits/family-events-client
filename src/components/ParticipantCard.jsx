@@ -1,21 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './ParticipantCard.css';
-
+import Spinner from './Spinner';
 
 const ParticipantCard = ({ participant, deleteParticipant }) => {
     const [isDeleting, setIsDeleting] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const handleDelete = () => {
         setIsDeleting(true);
         setTimeout(() => {
             deleteParticipant(participant._id);
         }, 500);
-        // deleteParticipant(participant._id);
     };
+
+    useEffect(() => {
+        const loadImage = () => {
+            return new Promise((resolve, reject) => {
+                const image = new Image();
+                image.onload = () => resolve();
+                image.onerror = () => reject();
+                image.src = participant.imageUrl;
+            });
+        };
+
+        loadImage()
+            .then(() => {
+                setImageLoaded(true);
+            })
+            .catch(() => {
+                console.error("Error loading image");
+            });
+    }, [participant.imageUrl]);
 
     return (
         <li className={`participants-card-container ${isDeleting && "deleting"}`}>
-            <img className="avatar" src={participant.imageUrl} alt="" />
+            {!imageLoaded
+                ?
+                <Spinner />
+                :
+                <img className="avatar" src={participant.imageUrl} alt={`avatar of ${participant.name}`} loading='lazy' />
+            }
             <p>
                 {participant.name}
             </p>

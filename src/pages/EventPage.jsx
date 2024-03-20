@@ -82,7 +82,7 @@ const EventPage = () => {
     return (
         <section className="general-page-container">
             {showEditMenu && <EditMenu setShowEditMenu={setShowEditMenu} event={event} participants={participants} />}
-            <img className="header-img" src={imageBG} alt="background image of a house in the mountain" />
+            <img loading="lazy" className="header-img" src={imageBG} alt="background image of a house in the mountain" />
             <h1 className="event-title">{event.name}</h1>
             {
                 !loading ?
