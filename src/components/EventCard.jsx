@@ -9,7 +9,10 @@ const EventCard = ({ event }) => {
         <h3>{event.name}</h3>
         <p>📆{formatDate(event.date)}</p>
         <p>{event.description}</p>
-        <p>👨‍👩‍👧‍👦 {event.participants.length + event.extraParticipants.length}</p>
+        <p>
+          👨‍👩‍👧‍👦{" "}
+          {event.participants.length + (event.extraParticipants?.length || 0)}
+        </p>
       </Link>
     </li>
   );
