@@ -37,6 +37,13 @@ class EventsService {
         return this.api.post("/events", event);
     }
 
+    addExtraParticipant(eventId, participant) {
+        return this.api.post(`/events/${eventId}/extra-participants`, participant);
+    }
+
+    deleteExtraParticipant(eventId, name) {
+        return this.api.delete(`/events/${eventId}/extra-participants/${name}`);
+    }
 }
 
 class UserService {

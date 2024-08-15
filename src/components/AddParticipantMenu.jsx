@@ -1,16 +1,17 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import "./AddParticipantMenu.css";
 import { addParticipantsContext } from "../context/participant.context";
 import Spinner from "./Spinner";
 import SearchInput from "./SearchInput";
+import ExtraParticipantModal from "./ExtraParticipantModal";
 
-const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
+const AddParticipantMenu = ({ availableParticipants, addParticipants, getEvent }) => {
   const { setShowParticipantsMenu } = useContext(addParticipantsContext);
   const [participantsToAdd, setParticipantsToAdd] = useState([]);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [displayedParticipants, setDisplayedParticipants] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const loadImagePromises = availableParticipants.map(
@@ -81,6 +82,17 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants }) => {
                 <p>{participant.name}</p>
               </li>
             ))}
+            <button className="extra" onClick={() => setShowModal(true)}>
+              Afegeix algú extra
+            </button>
+            {showModal && (
+              <ExtraParticipantModal
+                getEvent={getEvent}
+                handleFadeOut={handleFadeOut}
+                setShowModal={setShowModal}
+                handleClose={handleFadeOut}
+              />
+            )}
           </ul>
           {participantsToAdd.length === 0 ? (
             <button

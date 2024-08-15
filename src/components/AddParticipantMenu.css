@@ -58,3 +58,7 @@ input[type="checkbox"] {
     border-bottom: #773030 0px solid;
     border-right: #773030 3px solid;
 }
+
+.extra{
+    margin-bottom: 4rem;
+}
