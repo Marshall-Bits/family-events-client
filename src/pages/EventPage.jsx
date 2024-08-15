@@ -28,7 +28,7 @@ const EventPage = () => {
       .then((response) => {
         setEvent(response.data);
         setParticipants(response.data.participants);
-        setExtraParticipants(response.data.extraParticipants);
+        setExtraParticipants(response.data.extraParticipants || []);
       })
       .catch((error) => {
         console.error(error);
