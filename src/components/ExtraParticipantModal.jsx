@@ -20,10 +20,13 @@ const ExtraParticipantModal = ({ setShowModal, getEvent, handleFadeOut }) => {
   };
 
   return (
-    <div className="layout">
+    <div onClick={() => setShowModal(false)} className="layout">
       <div className="modal">
         <input type="text" onChange={(e) => setParticipant(e.target.value)} />
-        <button onClick={() => handleAddParticipant(participant)}>Afegir</button>
+        <button className="yes-btn" onClick={() => handleAddParticipant(participant)}>
+          Afegir
+        </button>
+        <button className="no-btn" onClick={() => setShowModal(false)}>Cancel·lar</button>
       </div>
     </div>
   );
