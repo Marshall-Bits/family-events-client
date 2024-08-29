@@ -43,6 +43,7 @@ const ParticipantCard = ({ participant, deleteParticipant, isExtra }) => {
         <img
           className="avatar"
           src={isExtra ? defaultImage : participant.imageUrl}
+          onError={(e) => (e.target.src = defaultImage)}
           alt={`avatar of ${participant.name}`}
           loading="lazy"
         />

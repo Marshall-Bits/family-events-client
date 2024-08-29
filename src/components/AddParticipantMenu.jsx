@@ -5,15 +5,22 @@ import Spinner from "./Spinner";
 import SearchInput from "./SearchInput";
 import ExtraParticipantModal from "./ExtraParticipantModal";
 
-const AddParticipantMenu = ({ availableParticipants, addParticipants, getEvent }) => {
+const AddParticipantMenu = ({
+  availableParticipants,
+  addParticipants,
+  getEvent,
+}) => {
   const { setShowParticipantsMenu } = useContext(addParticipantsContext);
   const [participantsToAdd, setParticipantsToAdd] = useState([]);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(true);
   const [displayedParticipants, setDisplayedParticipants] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
+  const defaultImage =
+    "https://res.cloudinary.com/marcelusironhack/image/upload/v1710765987/neutralPNG_p60p83.png";
+
+  /*   useEffect(() => {
     const loadImagePromises = availableParticipants.map(
       (participant) =>
         new Promise((resolve, reject) => {
@@ -28,7 +35,7 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants, getEvent }
       .then(() => setImagesLoaded(true))
       .catch((error) => console.error("Error loading images:", error));
   }, [availableParticipants]);
-
+ */
   useEffect(() => {
     setDisplayedParticipants(availableParticipants);
   }, []);
@@ -76,6 +83,9 @@ const AddParticipantMenu = ({ availableParticipants, addParticipants, getEvent }
                 <img
                   className="avatar"
                   src={participant.imageUrl}
+                  onError={(e) => {
+                    e.target.src = defaultImage;
+                  }}
                   alt={`avatar of ${participant.name}`}
                   loading="lazy"
                 />
