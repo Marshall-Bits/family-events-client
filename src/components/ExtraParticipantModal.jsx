@@ -20,7 +20,7 @@ const ExtraParticipantModal = ({ setShowModal, getEvent, handleFadeOut }) => {
   };
 
   return (
-    <div onClick={() => setShowModal(false)} className="layout">
+    <div className="layout">
       <div className="modal">
         <input type="text" required onChange={(e) => setParticipant(e.target.value)} />
         <button className="yes-btn" onClick={() => handleAddParticipant(participant)}>
